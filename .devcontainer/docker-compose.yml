@@ -1,0 +1,29 @@
+version: "3"
+
+services:
+  vscode:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+      - UID=${UID}
+      - GID=${GID}
+      - UNAME=${UNAME}
+      - BUILD_ENV=${BUILD_ENV}
+    image: latexdevcontainer
+    volumes:
+      - ../:/workspace
+      # Docker socket to access Docker server
+      - /var/run/docker.sock:/var/run/docker.sock
+      # SSH directory
+      - ~/.ssh:/root/.ssh
+      # For Windows without WSL, a copy will be made
+      # from /tmp/.ssh to ~/.ssh to fix permissions
+      - ~/.ssh:/tmp/.ssh:ro
+      # Shell history persistence
+      - ~/.zsh_history:/root/.zsh_history:z
+      # Git config
+      - ~/.gitconfig:/root/.gitconfig
+    environment:
+      - TZ=${TZ}
+    entrypoint: ["zsh", "-c", "while sleep 1000; do :; done"]

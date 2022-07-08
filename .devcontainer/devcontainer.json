@@ -1,0 +1,84 @@
+{
+    "name": "project-dev",
+    "dockerComposeFile": ["docker-compose.yml"],
+    "service": "vscode",
+    "runServices": ["vscode"],
+    "shutdownAction": "stopCompose",
+    "workspaceFolder": "/workspace",
+    "postCreateCommand": "",
+    "extensions": [
+        "james-yu.latex-workshop",
+        // Git
+        "eamodio.gitlens",
+        // Other helpers
+        "shardulm94.trailing-spaces",
+        "stkb.rewrap", // rewrap comments after n characters on one line
+        // Other
+        "vscode-icons-team.vscode-icons",
+        // Writing aid
+        "digoro.synonym-finder",
+        "znck.grammarly",
+        "bhughes339.replacerules",
+    ],
+    "settings": {
+        // General settings
+        "files.eol": "\n",
+        // Latex settings
+        "latex-workshop.chktex.enabled": true,
+        "latex-workshop.chktex.exec.args": [
+            "-wall",
+            "-n22",
+            "-n30",
+            "-e16",
+            "-q",
+            "-n46"
+        ],
+        "latex-workshop.view.pdf.viewer": "tab",
+        "latex-workshop.latex.autoBuild.run": "onSave",
+        "latex-workshop.latex.clean.subfolder.enabled": true,
+        "latex-workshop.texcount.autorun": "onSave",
+        "latex-workshop.intellisense.unimathsymbols.enabled": true,
+        "latex-workshop.bibtex-fields.sort.enabled": true,
+        "latex-workshop.bibtex-format.handleDuplicates": "Comment Duplicates",
+        "editor.formatOnSave": true,
+        "editor.wordWrap": "on",
+        "files.trimTrailingWhitespace": true,
+        "files.associations": {
+            "*.tex": "latex"
+        },
+        "latex-workshop.latexindent.path": "latexindent",
+        "latex-workshop.latexindent.args": [
+            "-c",
+            "%DIR%/",
+            "%TMPFILE%",
+            "-y=defaultIndent: '%INDENT%'"
+        ],
+        "grammarly.audience": "expert",
+        "grammarly.dialect": "american",
+        "grammarly.domain": "academic",
+        "grammarly.emotions": [
+            "confident",
+            "respectful",
+            "analytical"
+        ],
+        "grammarly.goals": [
+            "inform",
+            "convince"
+        ],
+        "grammarly.selectors": [
+            {
+                "language": "latex",
+                "scheme": "file"
+            }
+        ],
+        "replacerules.rules": {
+            "Add a new line after every sentence": {
+                "find": "[!?.]+(?= [A-Z])",
+                "replace": ".\n",
+                "languages": [
+                    "latex"
+                ]
+            },
+        }
+    }
+}
